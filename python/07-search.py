@@ -5,7 +5,8 @@ from requests_aws4auth import AWS4Auth
 def indexDocument(bucketName, objectName, text):
 
     # Update host with endpoint of your Elasticsearch cluster
-    host = "search--xxxxxxxxxxxxxx.us-east-1.es.amazonaws.com"
+    #host = "search--xxxxxxxxxxxxxx.us-east-1.es.amazonaws.com
+    host = "searchxxxxxxxxxxxxxxxx.us-east-1.es.amazonaws.com"
     region = 'us-east-1'
 
     if(text):
