@@ -20,7 +20,7 @@ For examples that use S3 bucket, upload sample images to an S3 bucket and update
   | [06-translate.py](./python/06-translate.py)  | Example showing translation of documents. |
   | [07-search.py](./python/07-search.py)  | Example showing document indexing in Elasticsearch. |
   | [08-forms.py](./python/08-forms.py)  | Example showing form (key/value) processing. |
-  | [09-forms-redaction.py](./python/08-forms.py)  | Example showing redacting information in document. |
+  | [09-forms-redaction.py](./python/09-forms-redaction.py)  | Example showing redacting information in document. |
   | [10-tables.py](./python/10-tables.py)  | Example showing table processing. |
   | [11-tables-expense.py](./python/11-tables-expense.py)  | Example showing validation of table data. |
   | [12-pdf-text.py](./python/12-pdf-text.py)  | Example showing PDF document processing. |
