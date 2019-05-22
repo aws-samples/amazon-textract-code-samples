@@ -18,11 +18,11 @@ For examples that use S3 bucket, upload sample images to an S3 bucket and update
   | [04-nlp-comprehend.py](./python/04-nlp-comprehend.py) | Example showing detecting entities and sentiment. |
   | [05-nlp-medical.py](./python/05-nlp-medical.py)  | Example showing detecting medical entities. |
   | [06-translate.py](./python/06-translate.py)  | Example showing translation of documents. |
-  | [07-forms.py](./python/07-forms.py)  | Example showing form (key/value) processing. |
-  | [09-tables.py](./python/09-tables.py)  | Example showing table processing. |
-  | [10-tables-expense.py](./python/10-tables-expense.py)  | Example showing validation of table data. |
-  | [11-pdf-text.py](./python/11-pdf-text.py)  | Example showing PDF document processing. |
-  | [13-search.py](./python/13-search.py)  | Example showing document indexing in Elasticsearch. |
+  | [07-search.py](./python/07-search.py)  | Example showing document indexing in Elasticsearch. |
+  | [08-forms.py](./python/08-forms.py)  | Example showing form (key/value) processing. |
+  | [10-tables.py](./python/10-tables.py)  | Example showing table processing. |
+  | [11-tables-expense.py](./python/11-tables-expense.py)  | Example showing validation of table data. |
+  | [12-pdf-text.py](./python/12-pdf-text.py)  | Example showing PDF document processing. |
 
 ## License Summary
 
