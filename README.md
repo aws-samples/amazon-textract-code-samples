@@ -12,7 +12,7 @@ For examples that use S3 bucket, upload sample images to an S3 bucket and update
 
 | Argument  | Description |
   | ------------- | ------------- |
-  | 01-detect-text-local.py  | Example showing processing a document on local machine. |
+  | [01-detect-text-local.py](./python/01-detect-text-local.py)  | Example showing processing a document on local machine. |
   | 02-detect-text-s3.py  | Example showing processing a document in Amazon S3 bucket. |
   | 03-reading-order.py  | Example showing printing document in reading order.  |
   | 04-nlp-comprehend.py | Example showing detecting entities and sentiment. |
