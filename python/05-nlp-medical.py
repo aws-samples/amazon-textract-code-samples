@@ -31,7 +31,7 @@ comprehend = boto3.client('comprehendmedical')
 
 # Detect medical entities
 entities =  comprehend.detect_entities(Text=text)
-print("\nMidical Entities\n========")
+print("\nMedical Entities\n========")
 for entity in entities["Entities"]:
     print("- {}".format(entity["Text"]))
     print ("   Type: {}".format(entity["Type"]))
