@@ -25,6 +25,12 @@ For examples that use S3 bucket, upload sample images to an S3 bucket and update
   | [11-tables-expense.py](./python/11-tables-expense.py)  | Example showing validation of table data. |
   | [12-pdf-text.py](./python/12-pdf-text.py)  | Example showing PDF document processing. |
 
+## Other Resources
+
+- [Large scale document processing with Amazon Textract - Reference Architecture](https://github.com/aws-samples/amazon-textract-serverless-large-scale-document-processing)
+- [Batch processing tool](https://github.com/aws-samples/amazon-textract-textractor)
+- [JSON response parser](https://github.com/aws-samples/amazon-textract-response-parser)
+
 ## License Summary
 
 This sample code is made available under the MIT-0 license. See the LICENSE file.
