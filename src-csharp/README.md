@@ -32,20 +32,20 @@ To run this console app, use the following valid switches one at a time:
 
 ## Arguments
 
-| Argument            | Description                                                                                          |
-| ------------------- | ---------------------------------------------------------------------------------------------------- |
-| --detect-text-local | Detect text from files read from your local machine                                                  |
-| --detect-text-s3    | Detect text from files read from your Amazon S3 bucket                                               |
-| --pdf-text          | Detect text from a pdf document                                                                      |
-| --forms             | Extract forms from a document                                                                        |
-| --forms-redaction   | Reads and then redacts specified regions in the document                                             |
-| --tables            | Detect tables                                                                                        |
-| --tables-expense    | Detects and computes on a table                                                                      |
-| --reading-order     | Detects and keeps the reading order from a two-column document                                       |
-| --nlp-comprehend    | Detects text and then apply Amazon Comprehend sentiment, entities, syntax, and key phrases detection |
-| --nlp-medical       | Detects text and then apply Amazon Comprehend entities and PHI detection                             |
-| --translate         | Translate to a different language                                                                    |
-| --search            | Index detected text using Elastic Search                                                             |
+| Argument| Description |
+|---------|-------------|
+| --detect-text-local | Detect text from files read from your local machine |
+| --detect-text-s3 | Detect text from files read from your Amazon S3 bucket|
+| --pdf-text | Detect text from a pdf document|
+| --forms | Extract forms from a document |
+| --forms-redaction | Reads and then redacts specified regions in the document|
+| --tables | Detect tables|
+| --tables-expense | Detects and computes on a table|
+| --reading-order | Detects and keeps the reading order from a two-column document|
+| --nlp-comprehend | Detects text and then apply Amazon Comprehend sentiment, entities, syntax, and key phrases detection|
+| --nlp-medical | Detects text and then apply Amazon Comprehend entities and PHI detection|
+| --translate | Translate to a different language|
+| --search | Index detected text using Elastic Search|
 
 Example usage and result
 
