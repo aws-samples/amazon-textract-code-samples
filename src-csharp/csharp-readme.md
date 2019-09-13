@@ -32,20 +32,20 @@ To run this console app, use the following valid switches one at a time:
 
 ## Samples
 
-| Argument            | Description                                                                                          |
-| ------------------- | ---------------------------------------------------------------------------------------------------- |
-| --detect-text-local | Detect text from files read from your local machine                                                  |
-| --detect-text-s3    | Detect text from files read from your Amazon S3 bucket                                               |
-| --pdf-text          | Detect text from a pdf document                                                                      |
-| --forms             | Extract forms from a document                                                                        |
-| --forms-redaction   | Reads and then redacts specified regions in the document                                             |
-| --tables            | Detect tables                                                                                        |
-| --tables-expense    | Detects and computes on a table                                                                      |
-| --reading-order     | Detects and keeps the reading order from a two-column document                                       |
-| --nlp-comprehend    | Detects text and then apply Amazon Comprehend sentiment, entities, syntax, and key phrases detection |
-| --nlp-medical       | Detects text and then apply Amazon Comprehend entities and PHI detection                             |
-| --translate         | Translate to a different language                                                                    |
-| --search            | Index detected text using Elastic Search                                                             |
+| Argument            | Description                                                |
+| ------------------- | ---------------------------------------------------------- |
+| --detect-text-local | Example showing processing a document on local machine.    |
+| --detect-text-s3    | Example showing processing a document in Amazon S3 bucket. |
+| --pdf-text          | Example showing PDF document processing.                   |
+| --forms             | Example showing form (key/value) processing.               |
+| --forms-redaction   | Example showing redacting information in document.         |
+| --tables            | Example showing table processing.                          |
+| --tables-expense    | Example showing validation of table data.                  |
+| --reading-order     | Example showing printing document in reading order.        |
+| --nlp-comprehend    | Example showing detecting entities and sentiment.          |
+| --nlp-medical       | Example showing detecting medical entities.                |
+| --translate         | Example showing translation of documents.                  |
+| --search            | Example showing document indexing in Elasticsearch.        |
 
 Example usage and result
 
