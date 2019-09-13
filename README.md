@@ -27,7 +27,7 @@ For examples that use S3 bucket, upload sample images to an S3 bucket and update
 
 ## .NET Usage
 
-Go to `src-csharp` folder for .NET [Readme](/src-csharp/readme.md)
+Go to `src-csharp` folder for .NET [Readme](src-csharp/readme.md)
 
 ```
 Usage: dotnet run [--switch]
