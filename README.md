@@ -27,8 +27,6 @@ For examples that use S3 bucket, upload sample images to an S3 bucket and update
 
 ## .NET Usage
 
-Go to `src-csharp` folder for .NET [Readme](csharp-readme.md)
-
 ```
 Usage: dotnet run [--switch]
 To run this console app, use the following valid switches one at a time:
@@ -48,6 +46,7 @@ To run this console app, use the following valid switches one at a time:
 ```
 
 ## .NET Samples
+Go to `src-csharp` folder for .NET samples
 
 | Argument            | Description                                                                                          |
 | ------------------- | ---------------------------------------------------------------------------------------------------- |
