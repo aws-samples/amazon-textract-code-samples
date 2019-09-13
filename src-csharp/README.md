@@ -30,7 +30,7 @@ To run this console app, use the following valid switches one at a time:
       e.g. dotnet run --detect-text-s3
 ```
 
-## Arguments
+## Samples
 
 | Argument            | Description                                                                                          |
 | ------------------- | ---------------------------------------------------------------------------------------------------- |

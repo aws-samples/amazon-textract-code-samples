@@ -47,7 +47,7 @@ To run this console app, use the following valid switches one at a time:
       e.g. dotnet run --detect-text-s3
 ```
 
-## .NET Arguments
+## .NET Samples
 
 | Argument            | Description                                                                                          |
 | ------------------- | ---------------------------------------------------------------------------------------------------- |
