@@ -15,7 +15,13 @@ namespace Dotnet_Core.ArgHandlers {
 			var jobId = task.Result;
 			textractAnalysisService.WaitForJobCompletion(jobId);
 			var results = textractAnalysisService.GetJobResults(jobId);
-			var document = new TextractDocument(results);
+            while (results.NextToken != null)
+            {
+                var nextResults = textractAnalysisService.GetJobResults(jobId, results.NextToken);
+                results.Blocks.AddRange(nextResults.Blocks);
+                results.NextToken = nextResults.NextToken;
+            }
+            var document = new TextractDocument(results);
 			document.Pages.ForEach(page => {
 				page.Tables.ForEach(table => {
 					var r = 0;

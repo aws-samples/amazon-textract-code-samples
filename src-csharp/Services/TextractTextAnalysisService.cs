@@ -10,15 +10,30 @@ namespace Dotnet_Core.Services {
 		public TextractTextAnalysisService(IAmazonTextract textract) {
 			this.textract = textract;
 		}
-		public GetDocumentAnalysisResponse GetJobResults(string jobId) {
-			var response = this.textract.GetDocumentAnalysisAsync(new GetDocumentAnalysisRequest {
-				JobId = jobId
-			});
-			response.Wait();
-			return response.Result;
-		}
+		public GetDocumentAnalysisResponse GetJobResults(string jobId, string nextToken = null) {
+            if (nextToken == null)
+            {
+                var response = this.textract.GetDocumentAnalysisAsync(new GetDocumentAnalysisRequest
+                {
+                    JobId = jobId,
+                });
+                response.Wait();
+                return response.Result;
+            }
+            else
+            {
+                var response = this.textract.GetDocumentAnalysisAsync(new GetDocumentAnalysisRequest
+                {
+                    JobId = jobId,
+                    NextToken = nextToken,
+                });
+                response.Wait();
+                return response.Result;
 
-		public bool IsJobComplete(string jobId) {
+            }
+        }
+
+        public bool IsJobComplete(string jobId) {
 			var response = this.textract.GetDocumentAnalysisAsync(new GetDocumentAnalysisRequest {
 				JobId = jobId
 			});
