@@ -1,4 +1,6 @@
-namespace Amazon.Textract.Model {
+using Amazon.Textract.Model;
+
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 	public class NewBoundingBox : BoundingBox {
 		public NewBoundingBox(float width, float height, float left, float top) : base() {
 			this.Width = width;

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Amazon.Textract.Model {
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 
 	public class Form {
 		public List<Field> Fields { get; set; }
@@ -15,9 +15,9 @@ namespace Amazon.Textract.Model {
 			this.Fields.Add(field);
 			this.fieldMap.Add(field.Key.ToString(), field);
 		}
-		public Field GetFieldByKey(string key) {
-			return this.fieldMap.GetValueOrDefault(key);
-		}
+		//public Field GetFieldByKey(string key) {
+		//	return this.fieldMap.GetValueOrDefault(key);
+		//}
 
 		public List<Field> SearchFieldsByKey(string key) {
 			return this.Fields.FindAll(f => f.Key.ToString().ToLower().Contains(key.ToLower()));

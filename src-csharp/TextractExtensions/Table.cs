@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Amazon.Textract.Model;
 
-namespace Amazon.Textract.Model {
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 	public class Table {
-		public Table(Block block, List<Block> blocks) {
+		public Table(Block block, Dictionary<string, Block> blocks) {
 			this.Block = block;
 			this.Confidence = block.Confidence;
 			this.Geometry = block.Geometry;
@@ -17,7 +18,7 @@ namespace Amazon.Textract.Model {
 				relationships.ForEach(r => {
 					if(r.Type == "CHILD") {
 						r.Ids.ForEach(id => {
-							var cell = new Cell(blocks.Find(b => b.Id == id), blocks);
+							var cell = new Cell(blocks[id], blocks);
 							if(cell.RowIndex > ri) {
 								this.Rows.Add(row);
 								row = new Row();

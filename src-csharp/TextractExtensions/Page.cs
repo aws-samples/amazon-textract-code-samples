@@ -1,11 +1,11 @@
-using System.Dynamic;
 using System;
 using System.Collections.Generic;
+using Amazon.Textract.Model;
 
-namespace Amazon.Textract.Model {
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 
 	public class Page {
-		public Page(List<Block> blocks, List<Block> blockMap) {
+		public Page(List<Block> blocks, Dictionary<string, Block> blockMap) {
 			this.Blocks = blocks;
 			this.Text = string.Empty;
 			this.Lines = new List<Line>();
@@ -91,7 +91,7 @@ namespace Amazon.Textract.Model {
 			var result = new List<string>();
 			result.Add(string.Format("Page{0}===={0}", Environment.NewLine));
 			this.Content.ForEach(c => {
-				result.Add(string.Format("{1}{0}", Environment.NewLine, c));
+				result.Add($"{Environment.NewLine}{c}");
 			});
 			return string.Join("", result);
 		}

@@ -57,10 +57,11 @@ class FieldValue:
  */
 
 using System.Collections.Generic;
+using Amazon.Textract.Model;
 
-namespace Amazon.Textract.Model {
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 	public class FieldValue {
-		public FieldValue(Block block, List<string> children, List<Block> blocks) {
+		public FieldValue(Block block, List<string> children, Dictionary<string, Block> blocks) {
 			this.Block = block;
 			this.Confidence = block.Confidence;
 			this.Geometry = block.Geometry;
@@ -71,7 +72,7 @@ namespace Amazon.Textract.Model {
 			var words = new List<string>();
 			if(children != null && children.Count > 0) {
 				children.ForEach(c => {
-					var wordBlock = blocks.Find(b => b.Id == c);
+					var wordBlock = blocks[c];
 					if(wordBlock.BlockType == "WORD") {
 						var w = new Word(wordBlock, blocks);
 						this.Content.Add(w);

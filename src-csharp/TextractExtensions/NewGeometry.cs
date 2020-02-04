@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Amazon.Textract.Model;
 
-namespace Amazon.Textract.Model {
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 	public class NewGeometry : Geometry {
 
 		public NewGeometry(Geometry geometry) : base() {

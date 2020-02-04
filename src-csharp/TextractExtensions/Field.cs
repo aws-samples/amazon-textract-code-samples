@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using Amazon.Textract.Model;
 
-namespace Amazon.Textract.Model {
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 
 	public class Field {
-		public Field(Block block, List<Block> blocks) {
+		public Field(Block block, Dictionary<string, Block> blocks) {
 			var relationships = block.Relationships;
 			if(relationships != null && relationships.Count > 0) {
 				relationships.ForEach(r => {
@@ -12,7 +13,7 @@ namespace Amazon.Textract.Model {
 						this.Key = new FieldKey(block, r.Ids, blocks);
 					} else if(r.Type == "VALUE") {
 						r.Ids.ForEach(id => {
-							var v = blocks.Find(b => b.Id == id);
+							var v = blocks[id];
 							if(v.EntityTypes.Contains("VALUE")) {
 								var vr = v.Relationships;
 								if(vr != null && vr.Count > 0) {

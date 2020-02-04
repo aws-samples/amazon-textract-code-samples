@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using Amazon.Textract.Model;
+
 /*
 class Line:
     def __init__(self, block, blockMap):
@@ -52,11 +55,9 @@ class Line:
         return self._block
  */
 
-using System.Collections.Generic;
-
-namespace Amazon.Textract.Model {
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 	public class Line {
-		public Line(Block block, List<Block> blocks) {
+		public Line(Block block, Dictionary<string, Block> blocks) {
 			this.Block = block;
 			this.Confidence = block.Confidence;
 			this.Geometry = block.Geometry;
@@ -69,8 +70,12 @@ namespace Amazon.Textract.Model {
 				relationships.ForEach(r => {
 					if(r.Type == "CHILD") {
 						r.Ids.ForEach(id => {
-							this.Words.Add(new Word(blocks.Find(b => b.BlockType == "WORD" && b.Id == id), blocks));
-						});
+                            var block = blocks[id];
+                            if(block.BlockType == "WORD")
+                                this.Words.Add(new Word(block, blocks));
+                            else
+                                this.Words.Add(new Word(null, blocks));
+                        });
 					}
 				});
 			}

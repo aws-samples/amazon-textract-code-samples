@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Amazon.Textract.Model {
+namespace Flyers.Costing.TextractApi.TextractExtensions {
 	public class Row {
 		public Row() {
 			this.Cells = new List<Cell>();
