@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Amazon.Textract.Model;
 
-namespace Flyers.Costing.TextractApi.TextractExtensions {
+namespace Amazon.Textract.Model {
 
 	public class Page {
 		public Page(List<Block> blocks, Dictionary<string, Block> blockMap) {

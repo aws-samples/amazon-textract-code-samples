@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Amazon.Textract.Model;
 
-namespace Flyers.Costing.TextractApi.TextractExtensions {
+namespace Amazon.Textract.Model {
 	public class Cell {
 		public Cell(Block block, Dictionary<string, Block> blocks) {
             if(block == null)

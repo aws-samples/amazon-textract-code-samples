@@ -55,7 +55,7 @@ class Line:
         return self._block
  */
 
-namespace Flyers.Costing.TextractApi.TextractExtensions {
+namespace Amazon.Textract.Model {
 	public class Line {
 		public Line(Block block, Dictionary<string, Block> blocks) {
 			this.Block = block;

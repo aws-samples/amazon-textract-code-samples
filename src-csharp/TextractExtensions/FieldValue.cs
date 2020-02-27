@@ -59,7 +59,7 @@ class FieldValue:
 using System.Collections.Generic;
 using Amazon.Textract.Model;
 
-namespace Flyers.Costing.TextractApi.TextractExtensions {
+namespace Amazon.Textract.Model {
 	public class FieldValue {
 		public FieldValue(Block block, List<string> children, Dictionary<string, Block> blocks) {
 			this.Block = block;

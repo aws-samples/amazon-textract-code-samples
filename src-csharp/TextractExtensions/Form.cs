@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Flyers.Costing.TextractApi.TextractExtensions {
+namespace Amazon.Textract.Model {
 
 	public class Form {
 		public List<Field> Fields { get; set; }

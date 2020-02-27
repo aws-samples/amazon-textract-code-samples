@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Amazon.Textract.Model;
 
-namespace Flyers.Costing.TextractApi.TextractExtensions {
+namespace Amazon.Textract.Model {
 	public class NewGeometry : Geometry {
 
 		public NewGeometry(Geometry geometry) : base() {

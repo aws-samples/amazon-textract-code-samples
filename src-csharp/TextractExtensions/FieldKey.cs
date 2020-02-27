@@ -53,7 +53,7 @@ class FieldKey:
 using System.Collections.Generic;
 using Amazon.Textract.Model;
 
-namespace Flyers.Costing.TextractApi.TextractExtensions {
+namespace Amazon.Textract.Model {
 	public class FieldKey {
 		public FieldKey(Block block, List<string> children, Dictionary<string, Block> blocks) {
 			this.Block = block;

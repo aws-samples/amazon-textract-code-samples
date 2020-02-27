@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Amazon.Textract.Model;
 
-namespace Flyers.Costing.TextractApi.TextractExtensions {
+namespace Amazon.Textract.Model {
 	public class TextractDocument {
 		private Dictionary<string, Block> blockMap = new Dictionary<string, Block>();
 		private List<List<Block>> documentPages = new List<List<Block>>();
