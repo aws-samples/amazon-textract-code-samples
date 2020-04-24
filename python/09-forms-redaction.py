@@ -3,21 +3,18 @@ from trp import Document
 from PIL import Image, ImageDraw
 
 # Document
-s3BucketName = "ki-textract-demo-docs"
 documentName = "employmentapp.png"
 
 # Amazon Textract client
 textract = boto3.client('textract')
 
 # Call Amazon Textract
-response = textract.analyze_document(
-    Document={
-        'S3Object': {
-            'Bucket': s3BucketName,
-            'Name': documentName
-        }
-    },
-    FeatureTypes=["FORMS"])
+with open(documentName, "rb") as document:
+    response = textract.analyze_document(
+        Document={
+            'Bytes': document.read(),
+        },
+        FeatureTypes=["FORMS"])
 
 #print(response)
 
