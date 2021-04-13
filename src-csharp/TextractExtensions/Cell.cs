@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using Amazon.Textract.Model;
 
 namespace Amazon.Textract.Model {
 	public class Cell {
-		public Cell(Block block, List<Block> blocks) {
+		public Cell(Block block, Dictionary<string, Block> blocks) {
+            if(block == null)
+                return;
 			this.Block = block;
 			this.ColumnIndex = block.ColumnIndex;
 			this.ColumnSpan = block.ColumnSpan;
@@ -19,12 +22,12 @@ namespace Amazon.Textract.Model {
 				relationships.ForEach(r => {
 					if(r.Type == "CHILD") {
 						r.Ids.ForEach(id => {
-							var rb = blocks.Find(b => b.Id == id);
-							if(rb.BlockType == "WORD") {
+							var rb = blocks[id];
+                            if(rb != null && rb.BlockType == "WORD") {
 								var w = new Word(rb, blocks);
 								this.Content.Add(w);
 								this.Text = this.Text + w.Text + " ";
-							} else if(rb.BlockType == "SELECTION_ELEMENT") {
+							} else if(rb != null && rb.BlockType == "SELECTION_ELEMENT") {
 								var se = new SelectionElement(rb, blocks);
 								this.Content.Add(se);
 								this.Text = this.Text + se.SelectionStatus + ", ";

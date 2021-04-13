@@ -1,42 +1,47 @@
 ﻿using System.Collections.Generic;
+using Amazon.Textract.Model;
 
 namespace Amazon.Textract.Model {
 	public class TextractDocument {
-		private List<Block> blockMap = new List<Block>();
-		List<List<Block>> documentPages = new List<List<Block>>();
+		private Dictionary<string, Block> blockMap = new Dictionary<string, Block>();
+		private List<List<Block>> documentPages = new List<List<Block>>();
 
 		public TextractDocument(GetDocumentAnalysisResponse response) {
 			this.Pages = new List<Page>();
 			this.ResponsePages = new List<GetDocumentAnalysisResponse>();
 			this.ResponsePages.Add(response);
-
 			this.ParseDocumentPagesAndBlockMap();
 			this.Parse();
 		}
 
 		private void ParseDocumentPagesAndBlockMap() {
-			List<Block> documentPage = null;
-			this.ResponsePages.ForEach(page => {
+            List<Block> documentPage = null;
+            this.ResponsePages.ForEach(page => {
 				page.Blocks.ForEach(block => {
-					this.blockMap.Add(block);
-
-					if(block.BlockType == "PAGE") {
-						if(documentPage != null) {
+					this.blockMap.Add(block.Id, block);
+					if(block.BlockType == "PAGE") 
+                    {
+                        if (documentPage != null) 
+                        {
 							this.documentPages.Add(documentPage);
 						}
 						documentPage = new List<Block>();
 						documentPage.Add(block);
 					} else {
-						documentPage.Add(block);
-					}
+                        if (documentPage == null)
+                        {
+                            documentPage = new List<Block>();
+                        }
+                        documentPage.Add(block);
+                    }
 				});
 			});
 
-			if(documentPage != null) {
-				this.documentPages.Add(documentPage);
-			}
-
-		}
+            if (documentPage != null)
+            {
+                this.documentPages.Add(documentPage);
+            }
+        }
 
 		private void Parse() {
 			this.documentPages.ForEach(documentPage => {
@@ -46,10 +51,10 @@ namespace Amazon.Textract.Model {
 		}
 
 		public Block GetBlockById(string blockId) {
-			return this.blockMap.Find(x => x.Id == blockId);
+			return this.blockMap[blockId];
 		}
 
-		public List<GetDocumentAnalysisResponse> ResponsePages { get; set; }
+        public List<GetDocumentAnalysisResponse> ResponsePages { get; set; }
 		public List<Page> Pages { get; set; }
 		public List<List<Block>> PageBlocks {
 			get {

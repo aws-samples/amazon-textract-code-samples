@@ -1,3 +1,5 @@
+using Amazon.Textract.Model;
+
 namespace Amazon.Textract.Model {
 	public class NewBoundingBox : BoundingBox {
 		public NewBoundingBox(float width, float height, float left, float top) : base() {

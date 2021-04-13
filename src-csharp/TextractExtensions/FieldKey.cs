@@ -51,10 +51,11 @@ class FieldKey:
  */
 
 using System.Collections.Generic;
+using Amazon.Textract.Model;
 
 namespace Amazon.Textract.Model {
 	public class FieldKey {
-		public FieldKey(Block block, List<string> children, List<Block> blocks) {
+		public FieldKey(Block block, List<string> children, Dictionary<string, Block> blocks) {
 			this.Block = block;
 			this.Confidence = block.Confidence;
 			this.Geometry = block.Geometry;
@@ -66,7 +67,7 @@ namespace Amazon.Textract.Model {
 
 			if(children != null && children.Count > 0) {
 				children.ForEach(c => {
-					var wordBlock = blocks.Find(b => b.Id == c);
+					var wordBlock = blocks[c];
 					if(wordBlock.BlockType == "WORD") {
 						var w = new Word(wordBlock, blocks);
 						this.Content.Add(w);

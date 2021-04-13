@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Amazon.Textract.Model;
 
 namespace Amazon.Textract.Model {
 	public class NewGeometry : Geometry {
