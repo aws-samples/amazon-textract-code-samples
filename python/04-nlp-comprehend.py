@@ -1,20 +1,18 @@
 import boto3
 
 # Document
-s3BucketName = "ki-textract-demo-docs"
 documentName = "simple-document-image.jpg"
 
 # Amazon Textract client
 textract = boto3.client('textract')
 
 # Call Amazon Textract
-response = textract.detect_document_text(
-    Document={
-        'S3Object': {
-            'Bucket': s3BucketName,
-            'Name': documentName
+with open(documentName, "rb") as document:
+    response = textract.detect_document_text(
+        Document={
+            'Bytes': document.read(),
         }
-    })
+    )
 
 #print(response)
 
