@@ -116,6 +116,8 @@ class Line:
             for rs in block['Relationships']:
                 if(rs['Type'] == 'CHILD'):
                     for cid in rs['Ids']:
+                        if cid not in blockMap:
+                            continue
                         if(blockMap[cid]["BlockType"] == "WORD"):
                             self._words.append(Word(blockMap[cid], blockMap))
     def __str__(self):
@@ -621,7 +623,8 @@ class Document:
                     documentPage = []
                     documentPage.append(block)
                 else:
-                    documentPage.append(block)
+                    if documentPage is not None:
+                        documentPage.append(block)
         if(documentPage):
             documentPages.append({"Blocks" : documentPage})
         return documentPages, blockMap
