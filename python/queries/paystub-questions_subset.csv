@@ -1,0 +1,15 @@
+﻿What is the Pay Period Start Date?,PAYSTUB_START_DATE
+What is the Pay Period End Date?,PAYSTUB_END_DATE
+What is the Pay Date?,PAYSTUB_PAY_DATE
+What is the Employee Name?,PAYSTUB_EMPLOYEE_NAME
+What is the Employee Address?,PAYSTUB_EMPLOYEE_ADDRESS
+What is the Company Name?,PAYSTUB_EMPLOYER_NAME
+What is the Company Address?,PAYSTUB_EMPLOYER_ADDRESS
+What is the Federal Filing Status?,PAYSTUB_FEDERAL_FILING
+What is the State Filing Status?,PAYSTUB_STATE_FILING
+What is the Current Gross Pay?,PAYSTUB_CURRENT_GROSS
+What is the YTD Gross Pay?,PAYSTUB_YTD_GROSS
+What is the Current Net Pay?,PAYSTUB_CURRENT_NET
+What is the YTD Net Pay?,PAYSTUB_YTD_NET
+What are the warnings?,PAYSTUB_WARNINGS
+What are the Messages?,PAYSTUB_MESSAGES
