@@ -46,7 +46,7 @@ def get_job_results(client, job_id):
         pages.append(response)
         print("Resultset page received: {}".format(len(pages)))
         next_token = None
-        if('NextToken' in response):
+        if 'NextToken' in response:
             next_token = response['NextToken']
 
     return pages
@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     job_id = start_job(client, s3_bucket_name, document_name)
     print("Started job with id: {}".format(job_id))
-    if(is_job_complete(client, job_id)):
+    if is_job_complete(client, job_id):
         response = get_job_results(client, job_id)
 
     # print(response)
