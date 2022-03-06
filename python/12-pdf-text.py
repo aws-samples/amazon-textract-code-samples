@@ -15,13 +15,13 @@ def start_job(client, s3_bucket_name, object_name):
 
 
 def is_job_complete(client, job_id):
-    time.sleep(5)
+    time.sleep(1)
     response = client.get_document_text_detection(JobId=job_id)
     status = response["JobStatus"]
     print("Job status: {}".format(status))
 
     while(status == "IN_PROGRESS"):
-        time.sleep(5)
+        time.sleep(1)
         response = client.get_document_text_detection(JobId=job_id)
         status = response["JobStatus"]
         print("Job status: {}".format(status))
@@ -31,7 +31,7 @@ def is_job_complete(client, job_id):
 
 def get_job_results(client, job_id):
     pages = []
-    time.sleep(5)
+    time.sleep(1)
     response = client.get_document_text_detection(JobId=job_id)
     pages.append(response)
     print("Resultset page received: {}".format(len(pages)))
@@ -40,7 +40,7 @@ def get_job_results(client, job_id):
         next_token = response['NextToken']
 
     while next_token:
-        time.sleep(5)
+        time.sleep(1)
         response = client.\
             get_document_text_detection(JobId=job_id, NextToken=next_token)
         pages.append(response)
