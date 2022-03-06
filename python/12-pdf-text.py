@@ -2,9 +2,8 @@ import boto3
 import time
 
 
-def start_job(s3_bucket_name, object_name, region):
+def start_job(client, s3_bucket_name, object_name):
     response = None
-    client = boto3.client('textract', region)
     response = client.start_document_text_detection(
         DocumentLocation={
             'S3Object': {
@@ -15,9 +14,8 @@ def start_job(s3_bucket_name, object_name, region):
     return response["JobId"]
 
 
-def is_job_complete(job_id):
+def is_job_complete(client, job_id):
     time.sleep(5)
-    client = boto3.client('textract')
     response = client.get_document_text_detection(JobId=job_id)
     status = response["JobStatus"]
     print("Job status: {}".format(status))
@@ -31,10 +29,9 @@ def is_job_complete(job_id):
     return status
 
 
-def get_job_results(job_id):
+def get_job_results(client, job_id):
     pages = []
     time.sleep(5)
-    client = boto3.client('textract')
     response = client.get_document_text_detection(JobId=job_id)
     pages.append(response)
     print("Resultset page received: {}".format(len(pages)))
@@ -60,11 +57,12 @@ if __name__ == "__main__":
     s3_bucket_name = "ki-textract-demo-docs"
     document_name = "Amazon-Textract-Pdf.pdf"
     region = "us-east-1"
+    client = boto3.client('textract', region_name=region)
 
-    job_id = start_job(s3_bucket_name, document_name, region)
+    job_id = start_job(client, s3_bucket_name, document_name)
     print("Started job with id: {}".format(job_id))
-    if(is_job_complete(job_id)):
-        response = get_job_results(job_id)
+    if(is_job_complete(client, job_id)):
+        response = get_job_results(client, job_id)
 
     # print(response)
 
