@@ -2,55 +2,55 @@ import boto3
 import time
 
 
-def start_job(s3BucketName, objectName):
+def start_job(s3_bucket_name, object_name):
     response = None
     client = boto3.client('textract')
     response = client.start_document_text_detection(
         DocumentLocation={
             'S3Object': {
-                'Bucket': s3BucketName,
-                'Name': objectName
+                'Bucket': s3_bucket_name,
+                'Name': object_name
             }})
 
     return response["JobId"]
 
 
-def is_job_complete(jobId):
+def is_job_complete(job_id):
     time.sleep(5)
     client = boto3.client('textract')
-    response = client.get_document_text_detection(JobId=jobId)
+    response = client.get_document_text_detection(JobId=job_id)
     status = response["JobStatus"]
     print("Job status: {}".format(status))
 
     while(status == "IN_PROGRESS"):
         time.sleep(5)
-        response = client.get_document_text_detection(JobId=jobId)
+        response = client.get_document_text_detection(JobId=job_id)
         status = response["JobStatus"]
         print("Job status: {}".format(status))
 
     return status
 
 
-def get_job_results(jobId):
+def get_job_results(job_id):
     pages = []
     time.sleep(5)
     client = boto3.client('textract')
-    response = client.get_document_text_detection(JobId=jobId)
+    response = client.get_document_text_detection(JobId=job_id)
     pages.append(response)
-    print("Resultset page recieved: {}".format(len(pages)))
-    nextToken = None
-    if('NextToken' in response):
-        nextToken = response['NextToken']
+    print("Resultset page received: {}".format(len(pages)))
+    next_token = None
+    if 'NextToken' in response:
+        next_token = response['NextToken']
 
-    while(nextToken):
+    while next_token:
         time.sleep(5)
         response = client.\
-            get_document_text_detection(JobId=jobId, NextToken=nextToken)
+            get_document_text_detection(JobId=job_id, NextToken=next_token)
         pages.append(response)
-        print("Resultset page recieved: {}".format(len(pages)))
-        nextToken = None
+        print("Resultset page received: {}".format(len(pages)))
+        next_token = None
         if('NextToken' in response):
-            nextToken = response['NextToken']
+            next_token = response['NextToken']
 
     return pages
 
