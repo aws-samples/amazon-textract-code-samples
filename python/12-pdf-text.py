@@ -2,9 +2,9 @@ import boto3
 import time
 
 
-def start_job(s3_bucket_name, object_name):
+def start_job(s3_bucket_name, object_name, region):
     response = None
-    client = boto3.client('textract')
+    client = boto3.client('textract', region)
     response = client.start_document_text_detection(
         DocumentLocation={
             'S3Object': {
@@ -57,13 +57,14 @@ def get_job_results(job_id):
 
 if __name__ == "__main__":
     # Document
-    s3BucketName = "ki-textract-demo-docs"
-    documentName = "Amazon-Textract-Pdf.pdf"
+    s3_bucket_name = "ki-textract-demo-docs"
+    document_name = "Amazon-Textract-Pdf.pdf"
+    region = "us-east-1"
 
-    jobId = start_job(s3BucketName, documentName)
-    print("Started job with id: {}".format(jobId))
-    if(is_job_complete(jobId)):
-        response = get_job_results(jobId)
+    job_id = start_job(s3_bucket_name, document_name, region)
+    print("Started job with id: {}".format(job_id))
+    if(is_job_complete(job_id)):
+        response = get_job_results(job_id)
 
     # print(response)
 
