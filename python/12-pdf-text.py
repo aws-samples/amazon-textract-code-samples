@@ -2,7 +2,7 @@ import boto3
 import time
 
 
-def startJob(s3BucketName, objectName):
+def start_job(s3BucketName, objectName):
     response = None
     client = boto3.client('textract')
     response = client.start_document_text_detection(
@@ -15,7 +15,7 @@ def startJob(s3BucketName, objectName):
     return response["JobId"]
 
 
-def isJobComplete(jobId):
+def is_job_complete(jobId):
     time.sleep(5)
     client = boto3.client('textract')
     response = client.get_document_text_detection(JobId=jobId)
@@ -31,7 +31,7 @@ def isJobComplete(jobId):
     return status
 
 
-def getJobResults(jobId):
+def get_job_results(jobId):
     pages = []
     time.sleep(5)
     client = boto3.client('textract')
@@ -60,15 +60,15 @@ if __name__ == "__main__":
     s3BucketName = "ki-textract-demo-docs"
     documentName = "Amazon-Textract-Pdf.pdf"
 
-    jobId = startJob(s3BucketName, documentName)
+    jobId = start_job(s3BucketName, documentName)
     print("Started job with id: {}".format(jobId))
-    if(isJobComplete(jobId)):
-        response = getJobResults(jobId)
+    if(is_job_complete(jobId)):
+        response = get_job_results(jobId)
 
     # print(response)
 
     # Print detected text
-    for resultPage in response:
-        for item in resultPage["Blocks"]:
+    for result_page in response:
+        for item in result_page["Blocks"]:
             if item["BlockType"] == "LINE":
                 print('\033[94m' + item["Text"] + '\033[0m')
