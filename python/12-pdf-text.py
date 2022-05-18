@@ -1,75 +1,73 @@
 import boto3
 import time
 
-def startJob(s3BucketName, objectName):
+
+def start_job(client, s3_bucket_name, object_name):
     response = None
-    client = boto3.client('textract')
     response = client.start_document_text_detection(
-    DocumentLocation={
-        'S3Object': {
-            'Bucket': s3BucketName,
-            'Name': objectName
-        }
-    })
+        DocumentLocation={
+            'S3Object': {
+                'Bucket': s3_bucket_name,
+                'Name': object_name
+            }})
 
     return response["JobId"]
 
-def isJobComplete(jobId):
-    time.sleep(5)
-    client = boto3.client('textract')
-    response = client.get_document_text_detection(JobId=jobId)
+
+def is_job_complete(client, job_id):
+    time.sleep(1)
+    response = client.get_document_text_detection(JobId=job_id)
     status = response["JobStatus"]
     print("Job status: {}".format(status))
 
     while(status == "IN_PROGRESS"):
-        time.sleep(5)
-        response = client.get_document_text_detection(JobId=jobId)
+        time.sleep(1)
+        response = client.get_document_text_detection(JobId=job_id)
         status = response["JobStatus"]
         print("Job status: {}".format(status))
 
     return status
 
-def getJobResults(jobId):
 
+def get_job_results(client, job_id):
     pages = []
-
-    time.sleep(5)
-
-    client = boto3.client('textract')
-    response = client.get_document_text_detection(JobId=jobId)
-    
+    time.sleep(1)
+    response = client.get_document_text_detection(JobId=job_id)
     pages.append(response)
-    print("Resultset page recieved: {}".format(len(pages)))
-    nextToken = None
-    if('NextToken' in response):
-        nextToken = response['NextToken']
+    print("Resultset page received: {}".format(len(pages)))
+    next_token = None
+    if 'NextToken' in response:
+        next_token = response['NextToken']
 
-    while(nextToken):
-        time.sleep(5)
-
-        response = client.get_document_text_detection(JobId=jobId, NextToken=nextToken)
-
+    while next_token:
+        time.sleep(1)
+        response = client.\
+            get_document_text_detection(JobId=job_id, NextToken=next_token)
         pages.append(response)
-        print("Resultset page recieved: {}".format(len(pages)))
-        nextToken = None
-        if('NextToken' in response):
-            nextToken = response['NextToken']
+        print("Resultset page received: {}".format(len(pages)))
+        next_token = None
+        if 'NextToken' in response:
+            next_token = response['NextToken']
 
     return pages
 
-# Document
-s3BucketName = "ki-textract-demo-docs"
-documentName = "Amazon-Textract-Pdf.pdf"
 
-jobId = startJob(s3BucketName, documentName)
-print("Started job with id: {}".format(jobId))
-if(isJobComplete(jobId)):
-    response = getJobResults(jobId)
+if __name__ == "__main__":
+    # Document
+    s3_bucket_name = "ki-textract-demo-docs"
+    document_name = "Amazon-Textract-Pdf.pdf"
+    region = "us-east-1"
+    client = boto3.client('textract', region_name=region)
 
-#print(response)
+    job_id = start_job(client, s3_bucket_name, document_name)
+    print("Started job with id: {}".format(job_id))
+    if is_job_complete(client, job_id):
+        response = get_job_results(client, job_id)
 
-# Print detected text
-for resultPage in response:
-    for item in resultPage["Blocks"]:
-        if item["BlockType"] == "LINE":
-            print ('\033[94m' +  item["Text"] + '\033[0m')
+    # print(response)
+
+    # Print detected text
+    for result_page in response:
+        for item in result_page["Blocks"]:
+            if item["BlockType"] == "LINE":
+                print('\033[94m' + item["Text"] + '\033[0m')
