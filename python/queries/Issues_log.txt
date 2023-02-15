@@ -1,0 +1,14 @@
+Date: 02/14/2023
+Issue: I have a multiple pages PDF and 1st page is landscape orientation, which is the envelope cover with some text like "Presorted" etc.
+When I run through the PDF, I am getting the below error since from the output of "d = t2.TDocumentSchema().load(response)" line it is expecting 
+"block_type = 'PAGE'" in the next line of code "page = d.pages[0]". I get the below error, but when I remove the first page and run, I get proper queries output. 
+Please help.
+
+========
+Error:
+File "/opt/python/trp/trp2.py", line 631, in pages
+    page_blocks = self.block_map(TextractBlockTypes.PAGE).values()
+  File "/opt/python/trp/trp2.py", line 491, in block_map
+    return {k: self.blocks[v] for k, v in self._block_id_maps[block_type.name].items()}
+[ERROR] KeyError: 'PAGE' Traceback (most recent call last):   File "/var/task/lambda_function.py", line 199, in lambda_handler     raise e   File "/var/task/lambda_function.py", line 175, in lambda_handler     paths = process_response(   File "/var/task/helper/helper.py", line 240, in process_response     page = d.pages[0]   File "/opt/python/trp/trp2.py", line 631, in pages     page_blocks = self.block_map(TextractBlockTypes.PAGE).values()   File "/opt/python/trp/trp2.py", line 491, in block_map     return {k: self.blocks[v] for k, v in self._block_id_maps[block_type.name].items()}
+=======
