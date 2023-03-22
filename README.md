@@ -24,6 +24,8 @@ For examples that use S3 bucket, upload sample images to an S3 bucket and update
 | [10-tables.py](./python/10-tables.py)                       | Example showing table processing.                          |
 | [11-tables-expense.py](./python/11-tables-expense.py)       | Example showing validation of table data.                  |
 | [12-pdf-text.py](./python/12-pdf-text.py)                   | Example showing PDF document processing.                   |
+| [13-signature.py](./python/13-signature.py)                   | Example showing Signature detection.                   |
+| [14-pdf-numeric-table-detection.py](./python/13-pdf-numeric-table.ipynb)                   | Example showing detection of numeric tables in pdf files.                   |
 
 ## .NET Usage
 
